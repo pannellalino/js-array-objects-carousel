@@ -37,9 +37,14 @@ const immagini = [
 ];
 
 const slider = document.querySelector('.slider');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
 
-const numImages = 5;
+
+const counterImages = 0;
 let sliderHtml = '';
+
+// con cun ciclo forEach leggo tutti gli oggetti dell'array
 
 immagini.forEach(immagine => {
   sliderHtml +=`
@@ -53,4 +58,23 @@ immagini.forEach(immagine => {
   `
 });
 
+// stampo ciò che ho letto
+
 slider.innerHTML = sliderHtml;
+
+// devo collegare i bottoni prev e next ad un evento click.
+
+prev.addEventListener('click', function(){
+ console.log('prev');
+})
+
+next.addEventListener('click', function(){
+  console.log('next');
+})
+
+// collegare al click una funzione che incrementi o decrementi l'immagine in base al bottone destra o sinistra
+
+prevNext ();
+
+function prevNext (){
+};

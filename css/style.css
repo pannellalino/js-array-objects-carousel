@@ -1,3 +1,23 @@
-.opacity{
-  opacity: .6;
+.container{
+  position: relative;
+}
+
+.buttons{
+  position: absolute;
+  top: 400px;
+  width: 100%;
+  padding: 10px;
+  z-index: 100;
+}
+
+.next, .prev{
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-color: lime;
+  border-radius: 50%;
+}
+
+.active{
+  display: block;
 }
