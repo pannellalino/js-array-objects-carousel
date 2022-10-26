@@ -41,14 +41,13 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 
-const counterImages = 0;
 let sliderHtml = '';
 
 // con cun ciclo forEach leggo tutti gli oggetti dell'array
 
 immagini.forEach(immagine => {
   sliderHtml +=`
-  <div class="card text-bg-dark">
+  <div class="card text-bg-dark d-none">
   <img src="${immagine.image}" class="card-img" alt="${immagine.title}">
   <div class="card-img-overlay">
     <h1 class="card-title text-center text-dark">${immagine.title}</h1>
@@ -62,19 +61,32 @@ immagini.forEach(immagine => {
 
 slider.innerHTML = sliderHtml;
 
+const cards = document.getElementsByClassName('card');
+let cardIndex = 0;
+
+// mostrare la prima card
+cards[cardIndex].classList.remove('d-none')
+cards[0].classList.add('active')
 // devo collegare i bottoni prev e next ad un evento click.
 
 prev.addEventListener('click', function(){
- console.log('prev');
+ prevNext (true);
 })
 
 next.addEventListener('click', function(){
-  console.log('next');
+  prevNext (true);
+  
 })
 
 // collegare al click una funzione che incrementi o decrementi l'immagine in base al bottone destra o sinistra
 
-prevNext ();
+prevNext ('isOk');
 
-function prevNext (){
+function prevNext (isOk){
+  cards[cardIndex].classList.remove('d-none');
+  if(isOk){
+    cardIndex++;
+    if(cardIndex === immagini) cardIndex = 0;
+  }
+  cards[cardIndex].classList.add('active');
 };
